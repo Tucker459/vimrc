@@ -8,6 +8,7 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
+
 " PEP 8 Indention 
 au BufNewFile,BufRead *.py:
     \ set tabstop=4 |
@@ -36,7 +37,6 @@ autocmd FileType go nmap <leader>c <Plug>(go-coverage)
 
 " Make my code pretty :)
 let python_highlight_all=1
-syntax on
 
 " syntastic options
 set statusline+=%#warningmsg#
@@ -56,14 +56,19 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " nerdtree show hidden files
 let NERDTreeShowHidden=1
 
+" syntax on 
+filetype plugin indent on
+
 
 " line numbering
 set nu
-" set relativenumber
 
-" color of text
-colo desert
-syntax on
+" Searh down into subfolders 
+" Provides tab-completion for all file-related tasks
+set path+=**
+
+" Display all matching files when we tab complete 
+set wildmenu
 
 " lightline-vim 
 set laststatus=2
@@ -86,6 +91,14 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'stephpy/vim-yaml'
 Plugin 'elzr/vim-json'
+Plugin 'morhetz/gruvbox'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
+" gruvbox colorscheme
+let g:gruvbox_italic=1
+colorscheme gruvbox
+set background=dark
+let g:gruvbox_contrast = 'dark'
